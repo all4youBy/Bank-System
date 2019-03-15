@@ -37,6 +37,7 @@ public class BankCard {
     private BankAccount bankAccount;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "directory_type_id")
     @Setter
     @Getter
     private CardType cardType;

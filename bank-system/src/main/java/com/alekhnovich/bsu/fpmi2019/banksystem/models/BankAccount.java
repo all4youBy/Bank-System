@@ -51,7 +51,7 @@ public class BankAccount {
     @NonNull
     private Bank bank;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "bankAccount")
     @Setter
     @Getter
     @NonNull

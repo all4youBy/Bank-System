@@ -11,6 +11,7 @@ import java.util.Set;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "client_id")
     @Getter
     @Setter
     private Integer clientId;
