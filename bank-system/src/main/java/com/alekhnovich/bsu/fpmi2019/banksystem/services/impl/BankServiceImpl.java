@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class BankServiceImpl extends BaseServiceImpl<Bank,Long> implements BankService {
+public class BankServiceImpl extends BaseServiceImpl<Bank,Integer> implements BankService {
 
     private final BankRepository bankRepository;
 
@@ -29,7 +29,7 @@ public class BankServiceImpl extends BaseServiceImpl<Bank,Long> implements BankS
     }
 
     @Override
-    public JpaRepository<Bank, Long> getRepository() {
+    public JpaRepository<Bank, Integer> getRepository() {
         return bankRepository;
     }
 

@@ -25,7 +25,7 @@ public class BankAccountCustomImpl implements BankAccountCustom {
 
     @Override
     @Transactional
-    public List<BankAccount> getAllbankAccounts() {
+    public List<BankAccount> getAllBankAccounts() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<BankAccount> query = cb.createQuery(BankAccount.class);
         Root<BankAccount> root = query.from(BankAccount.class);

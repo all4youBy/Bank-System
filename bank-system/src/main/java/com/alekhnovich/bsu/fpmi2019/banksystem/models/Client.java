@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "client")
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Client {
@@ -21,11 +22,18 @@ public class Client {
     @NonNull
     private String name;
 
+    @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
+    @Getter
+    @Setter
+    private Set<UniqueTaxId> taxIds;
+
     @Setter
     @Getter
     @NonNull
     private String address;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
+    @Getter
+    @Setter
     private Set<BankAccount> bankAccounts;
 }

@@ -2,23 +2,28 @@ package com.alekhnovich.bsu.fpmi2019.banksystem.models;
 
 import lombok.*;
 
+
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "account_type")
+@Table(name = "payment_order")
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class AccountType {
+public class PaymentOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_type_id")
     @Getter
-    private Integer accountTypeId;
+    private Integer id;
 
     @Setter
     @Getter
     @NonNull
-    private String type;
+    private String number;
 
+    @Setter
+    @Getter
+    @NonNull
+    private Date date;
 }

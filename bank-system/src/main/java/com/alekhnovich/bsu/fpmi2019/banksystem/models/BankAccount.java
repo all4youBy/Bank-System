@@ -1,5 +1,6 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
@@ -30,30 +31,29 @@ public class BankAccount {
     @NonNull
     private BigDecimal accountSum;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
+    @JsonIgnore
     @Setter
     @Getter
-    @NonNull
     private Client client;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "account_type_id")
     @Setter
     @Getter
-    @NonNull
     private AccountType accountType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "bank_id")
     @Setter
     @Getter
-    @NonNull
     private Bank bank;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "bankAccount")
     @Setter
     @Getter
-    @NonNull
     private Set<BankCard> bankCards;
 }

@@ -5,8 +5,11 @@ import com.alekhnovich.bsu.fpmi2019.banksystem.respository.BankAccountRepository
 import com.alekhnovich.bsu.fpmi2019.banksystem.services.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
-public class BankAccountServiceImpl extends BaseServiceImpl<BankAccount,Long> implements BankAccountService {
+
+@Service
+public class BankAccountServiceImpl extends BaseServiceImpl<BankAccount,Integer> implements BankAccountService {
 
     private final BankAccountRepository bankAccountRepository;
 
@@ -21,7 +24,7 @@ public class BankAccountServiceImpl extends BaseServiceImpl<BankAccount,Long> im
     }
 
     @Override
-    public JpaRepository<BankAccount, Long> getRepository() {
+    public JpaRepository<BankAccount, Integer> getRepository() {
         return bankAccountRepository;
     }
 }
