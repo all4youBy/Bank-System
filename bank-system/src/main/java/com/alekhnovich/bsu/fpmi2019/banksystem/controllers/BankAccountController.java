@@ -2,12 +2,10 @@ package com.alekhnovich.bsu.fpmi2019.banksystem.controllers;
 
 import com.alekhnovich.bsu.fpmi2019.banksystem.models.BankAccount;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.BankAccountRepository;
+import com.alekhnovich.bsu.fpmi2019.banksystem.services.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,9 +15,12 @@ public class BankAccountController {
 
     private final BankAccountRepository bankAccountRepository;
 
+    private final BankAccountService bankAccountService;
+
     @Autowired
-    public BankAccountController(BankAccountRepository bankAccountRepository) {
+    public BankAccountController(BankAccountRepository bankAccountRepository, BankAccountService bankAccountService) {
         this.bankAccountRepository = bankAccountRepository;
+        this.bankAccountService = bankAccountService;
     }
 
     @GetMapping
@@ -29,6 +30,11 @@ public class BankAccountController {
 
     @GetMapping("/bank/{bankId}")
     public ResponseEntity<List<BankAccount>> getBankAccountsByBankId(@PathVariable Integer bankId){
-        return ResponseEntity.ok(bankAccountRepository.getBankAccountByBankId(bankId));
+        return ResponseEntity.ok(bankAccountService.getBankAccountsByBankId(bankId));
+    }
+
+    @GetMapping("/bank")
+    public ResponseEntity<List<BankAccount>> getBankAccountsByBankName(@RequestParam(name = "bank_name") String bankName){
+        return ResponseEntity.ok(bankAccountService.getBankAccountsByBankName(bankName));
     }
 }

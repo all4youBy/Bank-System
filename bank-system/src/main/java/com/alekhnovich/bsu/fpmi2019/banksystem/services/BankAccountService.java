@@ -7,4 +7,5 @@ import java.util.List;
 public interface BankAccountService extends BaseService<BankAccount,Integer>{
     BankAccount getBankAccountByNumber(String number);
     List<BankAccount> getBankAccountsByBankId(Integer bankId);
+    List<BankAccount> getBankAccountsByBankName(String name);
 }
