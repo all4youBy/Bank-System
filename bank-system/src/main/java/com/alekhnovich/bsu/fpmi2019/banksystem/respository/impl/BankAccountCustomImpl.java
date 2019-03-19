@@ -4,8 +4,6 @@ import com.alekhnovich.bsu.fpmi2019.banksystem.models.BankAccount;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.BankAccountCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -24,7 +22,6 @@ public class BankAccountCustomImpl implements BankAccountCustom {
     }
 
     @Override
-    @Transactional
     public List<BankAccount> getAllBankAccounts() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<BankAccount> query = cb.createQuery(BankAccount.class);
@@ -34,4 +31,6 @@ public class BankAccountCustomImpl implements BankAccountCustom {
         return q.getResultList();
 
     }
+
+
 }

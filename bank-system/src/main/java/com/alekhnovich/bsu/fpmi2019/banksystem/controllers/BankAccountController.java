@@ -5,6 +5,7 @@ import com.alekhnovich.bsu.fpmi2019.banksystem.respository.BankAccountRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,4 +27,8 @@ public class BankAccountController {
         return ResponseEntity.ok(bankAccountRepository.findAll());
     }
 
+    @GetMapping("/bank/{bankId}")
+    public ResponseEntity<List<BankAccount>> getBankAccountsByBankId(@PathVariable Integer bankId){
+        return ResponseEntity.ok(bankAccountRepository.getBankAccountByBankId(bankId));
+    }
 }

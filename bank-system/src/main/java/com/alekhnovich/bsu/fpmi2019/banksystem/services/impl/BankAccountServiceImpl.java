@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class BankAccountServiceImpl extends BaseServiceImpl<BankAccount,Integer> implements BankAccountService {
@@ -21,6 +23,11 @@ public class BankAccountServiceImpl extends BaseServiceImpl<BankAccount,Integer>
     @Override
     public BankAccount getBankAccountByNumber(String number) {
         return bankAccountRepository.getBankAccountByNumber(number);
+    }
+
+    @Override
+    public List<BankAccount> getBankAccountsByBankId(Integer bankId) {
+        return bankAccountRepository.getBankAccountByBankId(bankId);
     }
 
     @Override

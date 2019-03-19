@@ -6,6 +6,7 @@ import com.alekhnovich.bsu.fpmi2019.banksystem.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,11 +37,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<Client> getItems() {
-        return null;
+        return clientRepository.findAll();
     }
 
-
     @Override
+    @Transactional
     public void deleteClientById(Integer clientId) {
         clientRepository.deleteClientByClientId(clientId);
     }
