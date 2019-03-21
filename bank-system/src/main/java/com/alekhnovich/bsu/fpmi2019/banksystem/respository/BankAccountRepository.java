@@ -1,6 +1,7 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.respository;
 
 import com.alekhnovich.bsu.fpmi2019.banksystem.models.BankAccount;
+import com.alekhnovich.bsu.fpmi2019.banksystem.models.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

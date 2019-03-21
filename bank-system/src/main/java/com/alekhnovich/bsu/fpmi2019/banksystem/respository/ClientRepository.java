@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client,Integer>, JpaSpecificationExecutor<Client>{
+public interface ClientRepository extends JpaRepository<Client,Integer>, JpaSpecificationExecutor<Client>,ClientCustom{
     void deleteClientByClientId(Integer clientId);
 }

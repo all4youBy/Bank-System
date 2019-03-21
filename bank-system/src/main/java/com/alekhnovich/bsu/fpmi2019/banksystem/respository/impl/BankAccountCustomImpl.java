@@ -1,6 +1,7 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.respository.impl;
 
 import com.alekhnovich.bsu.fpmi2019.banksystem.models.BankAccount;
+import com.alekhnovich.bsu.fpmi2019.banksystem.models.Client;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.BankAccountCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,5 @@ public class BankAccountCustomImpl implements BankAccountCustom {
         return q.getResultList();
 
     }
-
 
 }
