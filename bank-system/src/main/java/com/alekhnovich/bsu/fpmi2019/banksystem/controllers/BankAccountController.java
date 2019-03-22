@@ -14,7 +14,6 @@ import java.util.List;
 public class BankAccountController {
 
     private final BankAccountRepository bankAccountRepository;
-
     private final BankAccountService bankAccountService;
 
     @Autowired
@@ -33,8 +32,8 @@ public class BankAccountController {
         return ResponseEntity.ok(bankAccountService.getBankAccountsByBankId(bankId));
     }
 
-    @GetMapping("/bank")
-    public ResponseEntity<List<BankAccount>> getBankAccountsByBankName(@RequestParam(name = "bank_name") String bankName){
+    @GetMapping("/bank/by_name/{bankName}")
+    public ResponseEntity<List<BankAccount>> getBankAccountsByBankName(@PathVariable String bankName){
         return ResponseEntity.ok(bankAccountService.getBankAccountsByBankName(bankName));
     }
 }

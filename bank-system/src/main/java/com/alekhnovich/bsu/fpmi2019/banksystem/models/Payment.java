@@ -1,31 +1,36 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.sql.Date;
 
 @Entity
-@Table(name = "bank")
+@Table(name = "payment")
 @NoArgsConstructor
 @RequiredArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Bank{
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bank_id")
     @Getter
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "payment_date")
     @Setter
     @Getter
     @NonNull
-    private String bankName;
+    private Date paymentDate;
 
     @Setter
     @Getter
     @NonNull
-    private String address;
+    private BigDecimal sum;
+
+    @Column(name = "transaction_number")
+    @Setter
+    @Getter
+    @NonNull
+    private String transactionNumber;
 }

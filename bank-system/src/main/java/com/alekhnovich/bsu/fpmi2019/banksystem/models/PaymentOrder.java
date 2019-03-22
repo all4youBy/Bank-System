@@ -26,4 +26,9 @@ public class PaymentOrder {
     @Getter
     @NonNull
     private Date date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_status_payment_id")
+    private PaymentStatus paymentStatus;
+
 }

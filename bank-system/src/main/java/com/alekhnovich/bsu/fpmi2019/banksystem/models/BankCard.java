@@ -12,7 +12,9 @@ import java.sql.Date;
 public class BankCard {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "card_id")
+    @Getter
     private Integer cardId;
 
     @Setter

@@ -6,6 +6,5 @@ import lombok.NonNull;
 
 @Data
 public class ClientId {
-    @NonNull
     private Integer clientId;
 }
