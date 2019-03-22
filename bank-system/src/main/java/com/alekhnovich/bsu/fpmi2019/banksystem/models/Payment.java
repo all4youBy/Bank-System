@@ -1,5 +1,6 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,13 @@ public class Payment {
     @Getter
     @NonNull
     private Date paymentDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_order_id")
+    @JsonIgnore
+    @Setter
+    @Getter
+    private PaymentOrder paymentOrder;
 
     @Setter
     @Getter
