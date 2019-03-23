@@ -5,20 +5,20 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "card_type_directory")
+@Table(name = "tax_directory")
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class CardType {
+public class TaxDirectory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "type_id")
+    @Column(name = "tax_id")
     @Getter
-    private Integer typeId;
+    private Integer taxId;
 
+    @Column(name = "tax_name")
+    @Getter
     @Setter
-    @Getter
     @NonNull
-    private String type;
-
+    private String taxName;
 }

@@ -1,8 +1,8 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,6 +12,7 @@ import java.util.Set;
 @Table(name = "bank_account")
 @NoArgsConstructor
 @RequiredArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class BankAccount {
 
     @Id
@@ -39,14 +40,12 @@ public class BankAccount {
     private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @JoinColumn(name = "account_type_id")
     @Setter
     @Getter
     private AccountType accountType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @JoinColumn(name = "bank_id")
     @Setter
     @Getter
