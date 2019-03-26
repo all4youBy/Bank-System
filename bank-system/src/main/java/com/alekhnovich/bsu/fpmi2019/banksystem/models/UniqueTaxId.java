@@ -15,6 +15,7 @@ import javax.persistence.*;
 public class UniqueTaxId {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private String id;
 

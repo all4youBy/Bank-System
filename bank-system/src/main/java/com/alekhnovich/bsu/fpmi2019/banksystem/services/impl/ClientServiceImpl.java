@@ -11,34 +11,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @Service
-public class ClientServiceImpl implements ClientService {
+public class ClientServiceImpl extends BaseServiceImpl<Client,Integer> implements ClientService {
 
     private final ClientRepository clientRepository;
+
 
     @Autowired
     public ClientServiceImpl(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
+
     @Override
     public JpaRepository<Client, Integer> getRepository() {
         return clientRepository;
-    }
-
-    @Override
-    public Client addItem(Client item) {
-        return null;
-    }
-
-    @Override
-    public Client getItem(Integer key) {
-        return null;
-    }
-
-    @Override
-    public List<Client> getItems() {
-        return clientRepository.findAll();
     }
 
     @Override
