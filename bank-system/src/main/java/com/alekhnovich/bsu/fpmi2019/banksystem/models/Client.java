@@ -3,6 +3,7 @@ package com.alekhnovich.bsu.fpmi2019.banksystem.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.Set;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id")
+    @Column(name = "client_id",columnDefinition = "serial")
     @Getter
     @Setter
     private Integer clientId;
@@ -25,7 +26,7 @@ public class Client {
     @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
     @Getter
     @Setter
-    private Set<UniqueTaxId> taxIds;
+    private Set<UniqueTaxId> taxIds = Collections.emptySet();
 
     @Setter
     @Getter
@@ -35,5 +36,5 @@ public class Client {
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
     @Getter
     @Setter
-    private Set<BankAccount> bankAccounts;
+    private Set<BankAccount> bankAccounts = Collections.emptySet();
 }

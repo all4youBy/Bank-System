@@ -36,4 +36,6 @@ public class BankAccountController {
     public ResponseEntity<List<BankAccount>> getBankAccountsByBankName(@PathVariable String bankName){
         return ResponseEntity.ok(bankAccountService.getBankAccountsByBankName(bankName));
     }
+
+//    public ResponseEntity<Object> addBankAccount(@RequestBody )
 }

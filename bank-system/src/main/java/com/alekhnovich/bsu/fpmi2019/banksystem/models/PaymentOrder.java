@@ -47,7 +47,7 @@ public class PaymentOrder {
     @Getter
     private Client beneficiary;
 
-    @Column(name = "third_person_tax_id")
+    @Column(name = "third_person_uti")
     @Setter
     @Getter
     private String thirdPersonUTI;
