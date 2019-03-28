@@ -11,9 +11,11 @@ import java.util.Set;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Client {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id",columnDefinition = "serial")
+    @SequenceGenerator(name = "client_id_gen",sequenceName = "client_id_seq",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "client_id_gen")
+    @Column(name = "client_id")
     @Getter
     @Setter
     private Integer clientId;

@@ -15,4 +15,11 @@ public class ClientSpecification {
             return criteriaBuilder.equal(clientInBank.get(Bank_.bankName),bankName);
         };
     }
+
+
+//    public static Specification<Client> clientPayers(){
+//        return ((root, criteriaQuery, criteriaBuilder) -> {
+//
+//        })
+//    }
 }
