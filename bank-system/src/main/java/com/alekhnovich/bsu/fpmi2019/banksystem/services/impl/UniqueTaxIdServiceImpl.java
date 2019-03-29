@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UniqueTaxIdServiceImpl extends BaseServiceImpl<UniqueTaxId,Integer> implements UniqueTaxIdService {
+public class UniqueTaxIdServiceImpl extends CrudServiceImpl<UniqueTaxId,Integer> implements UniqueTaxIdService {
 
     private final UniqueTaxIdRepository uniqueTaxIdRepository;
 

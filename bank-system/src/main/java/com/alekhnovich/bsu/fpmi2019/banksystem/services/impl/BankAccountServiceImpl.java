@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Service
-public class BankAccountServiceImpl extends BaseServiceImpl<BankAccount,Integer> implements BankAccountService {
+public class BankAccountServiceImpl extends CrudServiceImpl<BankAccount,Integer> implements BankAccountService {
 
     private final BankAccountRepository bankAccountRepository;
 

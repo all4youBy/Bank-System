@@ -46,7 +46,7 @@ public class ClientController {
 
     @DeleteMapping
     public void deleteClient(@RequestBody ClientId clientId){
-        clientService.deleteClientById(clientId.getClientId());
+        clientService.deleteItemByKey(clientId.getClientId());
     }
 
     @GetMapping("/ddd/{bankName}")
@@ -60,5 +60,14 @@ public class ClientController {
                 .stream()
                 .map(client -> mapper.map(client,ClientDTO.class))
                 .collect(Collectors.toList()));
+    }
+
+    @GetMapping("/payers")
+    public ResponseEntity<Object> getPayers(){
+        List<Client> payers = clientService.getPayers();
+
+        return payers == null?
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Can't get payers.")):
+                ResponseEntity.ok(payers);
     }
 }

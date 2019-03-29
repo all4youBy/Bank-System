@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class BankServiceImpl extends BaseServiceImpl<Bank,Integer> implements BankService {
+public class BankServiceImpl extends CrudServiceImpl<Bank,Integer> implements BankService {
 
     private final BankRepository bankRepository;
 

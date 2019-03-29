@@ -23,10 +23,16 @@ public class ClientJsonSerializer extends JsonSerializer<Client> {
         jsonGenerator.writeStringField("name",client.getName());
 
         jsonGenerator.writeFieldName("Tax ids");
-        jsonGenerator.writeObject(client.getTaxIds().stream().map(UniqueTaxId::getId).collect(Collectors.toSet()));
+        jsonGenerator.writeObject(client.getTaxIds()
+                .stream()
+                .map(UniqueTaxId::getId)
+                .collect(Collectors.toSet()));
 
         jsonGenerator.writeFieldName("Bank Accounts");
-        jsonGenerator.writeObject(client.getBankAccounts().stream().map(BankAccount::getNumber).collect(Collectors.toSet()));
+        jsonGenerator.writeObject(client.getBankAccounts()
+                .stream()
+                .map(BankAccount::getNumber)
+                .collect(Collectors.toSet()));
 
         jsonGenerator.writeEndObject();
     }
