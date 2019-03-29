@@ -1,6 +1,7 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.services.impl;
 
 import com.alekhnovich.bsu.fpmi2019.banksystem.models.Client;
+import com.alekhnovich.bsu.fpmi2019.banksystem.models.PaymentOrder_;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.ClientRepository;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.specifications.ClientSpecification;
 import com.alekhnovich.bsu.fpmi2019.banksystem.services.ClientService;
@@ -42,6 +43,11 @@ public class ClientServiceImpl extends CrudServiceImpl<Client,Integer> implement
 
     @Override
     public List<Client> getPayers() {
-        return clientRepository.getPayers();
+        return clientRepository.getClientsFromPaymentOrderByClientType(PaymentOrder_.PAYER);
+    }
+
+    @Override
+    public List<Client> getBeneficiaries() {
+        return clientRepository.getClientsFromPaymentOrderByClientType(PaymentOrder_.BENEFICIARY);
     }
 }

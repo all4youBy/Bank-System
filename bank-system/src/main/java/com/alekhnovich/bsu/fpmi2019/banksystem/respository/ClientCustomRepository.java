@@ -5,5 +5,5 @@ import com.alekhnovich.bsu.fpmi2019.banksystem.models.Client;
 import java.util.List;
 
 public interface ClientCustomRepository {
-    List<Client> getPayers();
+    List<Client> getClientsFromPaymentOrderByClientType(String clientType);
 }

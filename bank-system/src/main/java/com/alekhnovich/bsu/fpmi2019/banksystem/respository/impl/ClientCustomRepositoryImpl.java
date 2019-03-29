@@ -24,11 +24,11 @@ public class ClientCustomRepositoryImpl implements ClientCustomRepository {
     }
 
     @Override
-    public List<Client> getPayers() {
+    public List<Client> getClientsFromPaymentOrderByClientType(String clientType) {
         CriteriaBuilder cb = manager.getCriteriaBuilder();
         CriteriaQuery<Client> query = cb.createQuery(Client.class);
         Root<PaymentOrder> root = query.from(PaymentOrder.class);
-        query.select(root.get(PaymentOrder_.PAYER));
+        query.select(root.get(clientType)).distinct(true);
         return  manager.createQuery(query).getResultList();
     }
 }

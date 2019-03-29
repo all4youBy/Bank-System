@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -69,5 +70,15 @@ public class ClientController {
         return payers == null?
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Can't get payers.")):
                 ResponseEntity.ok(payers);
+    }
+
+    @GetMapping("/beneficiary")
+    public ResponseEntity<Object> getBeneficiaries(){
+       List<Client> beneficiaries = clientService.getBeneficiaries();
+
+       return beneficiaries == null?
+               ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Can't get beneficiaries.")):
+               ResponseEntity.ok(beneficiaries);
+
     }
 }
