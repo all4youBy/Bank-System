@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -46,7 +47,7 @@ public class ClientController {
 
     @DeleteMapping
     public void deleteClient(@RequestBody ClientId clientId){
-        clientService.deleteClientById(clientId.getClientId());
+        clientService.deleteItemByKey(clientId.getClientId());
     }
 
     @GetMapping("/ddd/{bankName}")
@@ -60,5 +61,24 @@ public class ClientController {
                 .stream()
                 .map(client -> mapper.map(client,ClientDTO.class))
                 .collect(Collectors.toList()));
+    }
+
+    @GetMapping("/payers")
+    public ResponseEntity<Object> getPayers(){
+        List<Client> payers = clientService.getPayers();
+
+        return payers == null?
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Can't get payers.")):
+                ResponseEntity.ok(payers);
+    }
+
+    @GetMapping("/beneficiary")
+    public ResponseEntity<Object> getBeneficiaries(){
+       List<Client> beneficiaries = clientService.getBeneficiaries();
+
+       return beneficiaries == null?
+               ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JSONMessage("Can't get beneficiaries.")):
+               ResponseEntity.ok(beneficiaries);
+
     }
 }

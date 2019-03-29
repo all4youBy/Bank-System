@@ -1,19 +1,20 @@
 package com.alekhnovich.bsu.fpmi2019.banksystem.services.impl;
 
 import com.alekhnovich.bsu.fpmi2019.banksystem.models.Client;
+import com.alekhnovich.bsu.fpmi2019.banksystem.models.PaymentOrder_;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.ClientRepository;
 import com.alekhnovich.bsu.fpmi2019.banksystem.respository.specifications.ClientSpecification;
 import com.alekhnovich.bsu.fpmi2019.banksystem.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
 @Service
-public class ClientServiceImpl extends BaseServiceImpl<Client,Integer> implements ClientService {
+public class ClientServiceImpl extends CrudServiceImpl<Client,Integer> implements ClientService {
 
     private final ClientRepository clientRepository;
 
@@ -29,14 +30,24 @@ public class ClientServiceImpl extends BaseServiceImpl<Client,Integer> implement
         return clientRepository;
     }
 
-    @Override
-    @Transactional
-    public void deleteClientById(Integer clientId) {
-        clientRepository.deleteClientByClientId(clientId);
-    }
+//    @Override
+//    @Transactional
+//    public void deleteClientById(Integer clientId) {
+//        clientRepository.deleteClientByClientId(clientId);
+//    }
 
     @Override
     public List<Client> getClientsOfBankByName(String bankName) {
         return clientRepository.findAll(ClientSpecification.clientsInBank(bankName));
+    }
+
+    @Override
+    public List<Client> getPayers() {
+        return clientRepository.getClientsFromPaymentOrderByClientType(PaymentOrder_.PAYER);
+    }
+
+    @Override
+    public List<Client> getBeneficiaries() {
+        return clientRepository.getClientsFromPaymentOrderByClientType(PaymentOrder_.BENEFICIARY);
     }
 }

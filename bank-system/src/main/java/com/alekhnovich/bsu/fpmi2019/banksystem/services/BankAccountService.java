@@ -4,7 +4,7 @@ import com.alekhnovich.bsu.fpmi2019.banksystem.models.BankAccount;
 
 import java.util.List;
 
-public interface BankAccountService extends BaseService<BankAccount,Integer>{
+public interface BankAccountService extends CrudService<BankAccount,Integer> {
 
     BankAccount getBankAccountByNumber(String number);
     List<BankAccount> getBankAccountsByBankId(Integer bankId);

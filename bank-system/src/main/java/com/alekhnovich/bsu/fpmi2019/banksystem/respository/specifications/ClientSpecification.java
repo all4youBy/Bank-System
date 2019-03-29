@@ -16,10 +16,4 @@ public class ClientSpecification {
         };
     }
 
-
-//    public static Specification<Client> clientPayers(){
-//        return ((root, criteriaQuery, criteriaBuilder) -> {
-//
-//        })
-//    }
 }
